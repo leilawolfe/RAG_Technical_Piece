@@ -1,6 +1,6 @@
 # Intelligent Chunking Strategies For Document Extraction
 <p align="center">
-  <strong>August 11, 2026</strong> &nbsp;|&nbsp; 
+  <strong>August 15, 2026</strong> &nbsp;|&nbsp; 
   <strong>Leila Wolfe</strong> &nbsp;|&nbsp; 
   <strong>5-minute read</strong>
 </p>
@@ -20,5 +20,10 @@ To prevent truncation, a document can be chunked into smaller sections. However,
 ### Overlapping Chunks
 When setting a hard chunk size, the full context required to infer or summarize may be lost. One way to circumvent this is to allow for a certain amount of text overlap between chunks. This may result in redundant information and higher cost.
 
-### Chunking by Type
+```python
+add python code that shows example of how to add overlapping chunk code
 
+```
+
+### Chunking by Type
+A document can contain multiple types of information such as legal language, tables or signed off emails. When the LLM is provided a schema for extraction - the instructions for terms that must be pulled - it is particularly susceptible to hallucinations, even if the prompts states to fill in NA values for information not found in the source. It is best to omit terms not present in a document to avoid false extractions. 
