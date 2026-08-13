@@ -15,4 +15,10 @@ To prevent truncation, a document can be chunked into smaller sections. However,
   <figcaption><em>Figure 1: Overview of LLM Document Extraction</em></figcaption>
 </figure>
 
-## 
+## Strategies
+
+### Overlapping Chunks
+When setting a hard chunk size, the full context required to infer or summarize may be lost. One way to circumvent this is to allow for a certain amount of text overlap between chunks. This may result in redundant information and higher cost.
+
+### Chunking by Type
+
