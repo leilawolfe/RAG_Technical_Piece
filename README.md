@@ -14,6 +14,5 @@ To prevent truncation, a document can be chunked into smaller sections and passe
   <img src="./assets/Screenshot 2026-08-11 213526.png" alt="view cloud traces" width="800"/>
   <figcaption><em>Figure 1: Overview of LLM Document Extraction</em></figcaption>
 </figure>
-<br>
 
 ## 
