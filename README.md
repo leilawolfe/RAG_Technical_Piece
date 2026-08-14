@@ -18,12 +18,24 @@ To prevent truncation, a document can be chunked into smaller sections. However,
 ## Strategies
 
 ### Overlapping Chunks
-When setting a hard chunk size, the full context required to infer or summarize may be lost. One way to circumvent this is to allow for a certain amount of text overlap between chunks. This may result in redundant information and higher cost.
+When setting a hard chunk size, the full context required to infer or summarize may be lost. One way to circumvent this is to allow for a certain amount of text overlap between chunks. A reasonable token overlap could be roughly ~15% of your total text but results may depending on your specific project.  Some splitters will take into account semantic barriers such as new sentences, paragraphs and pages. Langchain offers a text splitter that allows devs control over chunk size, chunk overlap, and semantic barriers. The separators argument allows you to pass a list with delimitators. 
 
 ```python
-add python code that shows example of how to add overlapping chunk code
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+# Initialize the splitter with size and overlap limits
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=100,        # Maximum length of each chunk
+    chunk_overlap=20,      # Number of overlapping characters/tokens between chunks
+    separators=["\n\n", "\n", " ", ""]
+)
+
+# Create the chunks
+chunks = text_splitter.split_text(text.strip())
 
 ```
+
+> Note: While chunking can preserve context, it leads to redundancy and increased costs.
 
 ### Chunking by Type
 A document can contain multiple types of information such as legal language, tables or signed off emails. When the LLM is provided a schema for extraction - the instructions for terms that must be pulled - it is particularly susceptible to hallucinations, even if the prompts states to fill in NA values for information not found in the source. It is best to omit terms not present in a document to avoid false extractions. 
