@@ -38,4 +38,6 @@ chunks = text_splitter.split_text(text.strip())
 > Note: While chunking can preserve context, it leads to redundancy and increased costs.
 
 ### Chunking by Type
-A document can contain multiple types of information such as legal language, tables or signed off emails. When the LLM is provided a schema for extraction - the instructions for terms that must be pulled - it is particularly susceptible to hallucinations, even if the prompts states to fill in NA values for information not found in the source. It is best to omit terms not present in a document to avoid false extractions. 
+A document can contain multiple types of information such as legal language, tables or verification logs. When the LLM is provided a schema for extraction - the instructions for terms that must be pulled - it is particularly susceptible to hallucinations, even if the prompts states to fill in NA values for information not found in the source. It is best to omit terms not present in a document to avoid false extractions. 
+
+Pages in a document can be classified by type and chunked together so the appropriate schemas and prompts can be applied when calling the LLM. For instance, a supply contract is a legal document that describes pricing for supplies and the terms and conditions surrounding their purchase. 
